@@ -9,7 +9,7 @@ function calculateProduct() {
   // intialize product to 0
   let product = 0
 
-  // initialize numbers to an empty string
+  // initialize  numbers to an empty string
   let numbers = ""
   
   // get first integer
@@ -24,20 +24,26 @@ function calculateProduct() {
   if ((isNaN(firstInt))||(isNaN(secondInt))) {
     numbers = "Please enter two integers."
   }
-  // use a for loop to calculate the product from the two integers 
+  // otherwise, use a for loop to calculate the product from the two integers 
   else {
     for (let counter = 1; counter<= absSecondInt; counter++) {
       product += absFirstInt
     }
-    numbers = firstInt+"*"+secondInt+"="+product
-      if ((firstInt < 0)&&(secondInt>0)) {
-        product = "-"+product
-      }
-      else if ((secondInt < 0)&&(firstInt>0)) {
-        product= "-"+product
-      }
     
+      // if the first integer is less than 0 and the second int is greater than 0, then make the product negative
+      if ((firstInt < 0)&&(secondInt>0)) {
+        product = product*-1
+      }
+
+      // otherwise, if the first integer is greater than 0 and the second int is less than 0, then make the product negative
+      else if ((secondInt < 0)&&(firstInt>0)) {
+        product= product*-1
+      }
+
+    // redefine calculation statement
+    numbers = firstInt+"*"+secondInt+"="+product
   }
+  
   // display the product
   document.getElementById('program-feedback').innerHTML = numbers
 }
